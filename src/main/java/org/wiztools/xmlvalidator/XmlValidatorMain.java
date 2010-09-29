@@ -25,11 +25,14 @@ public class XmlValidatorMain {
     @Argument(value="v", alias="verbose")
     boolean isVerbose;
 
+    private static final String lineSeparator = System.getProperty("line.separator");
+    private static final String doubleLineSeparator = lineSeparator + lineSeparator;
+
     // All the messages that need to be displayed:
-    private static final String msg_compile_success = "Schema Compile Successful: [%1$s]";
-    private static final String msg_compile_fail = "Error compiling schema: %1$s";
-    private static final String msg_validation_success = "Validation Successful: [%1$s] against [%2$s]";
-    private static final String msg_validation_fail = "Error validating [%1$s] against [%2$s]";
+    private static final String msg_compile_success = "Schema Compile Successful: [%1$s]" + lineSeparator;
+    private static final String msg_compile_fail = "Error compiling schema: %1$s:" + doubleLineSeparator;
+    private static final String msg_validation_success = "Validation Successful: [%1$s] against [%2$s]" + lineSeparator;
+    private static final String msg_validation_fail = "Error validating [%1$s] against [%2$s]:" + doubleLineSeparator;
 
     public static void main(String[] arg) throws IOException {
         XmlValidatorMain parser = new XmlValidatorMain();
@@ -60,7 +63,7 @@ public class XmlValidatorMain {
         catch(SAXException ex) {
             hasFailures = true;
             System.err.printf(msg_compile_fail, parser.wxsSchema);
-            ex.printStackTrace(System.err);
+            System.err.println(ex.getMessage());
         }
         Schema rng = null;
         try{
@@ -72,7 +75,7 @@ public class XmlValidatorMain {
         catch(SAXException ex) {
             hasFailures = true;
             System.err.printf(msg_compile_fail, parser.rngSchema);
-            ex.printStackTrace(System.err);
+            System.err.println(ex.getMessage());
         }
 
         // Validate the XML files against the schemas:
@@ -86,7 +89,7 @@ public class XmlValidatorMain {
             catch(SAXException ex) {
                 hasFailures = true;
                 System.err.printf(msg_validation_fail, f, parser.wxsSchema);
-                ex.printStackTrace(System.err);
+                System.err.println(ex.getMessage());
             }
             try{
                 if(rng != null) SchemaUtil.validate(rng, new File(f));
@@ -97,7 +100,7 @@ public class XmlValidatorMain {
             catch(SAXException ex) {
                 hasFailures = true;
                 System.err.printf(msg_validation_fail, f, parser.rngSchema);
-                ex.printStackTrace(System.err);
+                System.err.println(ex.getMessage());
             }
         }
 
