@@ -7,22 +7,23 @@
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>xml-validator</name>
-    <url>http://wiztools.org</url>
+    <url>https://github.com/wiztools/xml-validator</url>
+    
+    <scm>
+        <connection>scm:git:https://github.com/wiztools/xml-validator.git</connection>
+        <developerConnection>scm:git:https://github.com/wiztools/xml-validator.git</developerConnection>
+        <url>https://github.com/wiztools/xml-validator</url>
+    </scm>
+    
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
@@ -38,7 +39,7 @@
                         </manifest>
                         <manifestEntries>
                             <mode>development</mode>
-                            <url>${pom.url}</url>
+                            <url>${project.url}</url>
                         </manifestEntries>
                     </archive>
                 </configuration>
@@ -63,7 +64,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.8.1</version>
+            <version>4.11</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -71,3 +72,4 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 </project>
+
