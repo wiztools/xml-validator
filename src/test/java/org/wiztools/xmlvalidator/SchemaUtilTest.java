@@ -39,7 +39,7 @@ public class SchemaUtilTest {
      */
     @Test
     public void testValidateXsdPositive() {
-        System.out.println("validate");
+        System.out.println("validateXsdPositive");
         try {
             Schema schema = SchemaUtil.getWXSSchema(new File("src/test/resources/books.xsd"));
             File file = new File("src/test/resources/books.xml");
@@ -50,4 +50,20 @@ public class SchemaUtilTest {
         }
     }
     
+    /**
+     * Test of validate method, of class SchemaUtil.
+     */
+    @Test
+    public void testValidateXsdNegative() {
+        System.out.println("validateXsdNegative");
+        try {
+            Schema schema = SchemaUtil.getWXSSchema(new File("src/test/resources/books-negative.xsd"));
+            File file = new File("src/test/resources/books.xml");
+            SchemaUtil.validate(schema, file);
+            fail("The test case is a prototype.");
+        }
+        catch(Exception ex) {
+            // Must come here!
+        }
+    }
 }
