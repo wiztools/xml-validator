@@ -13,16 +13,16 @@ import org.xml.sax.SAXException;
  * @author subWiz
  */
 public class XmlValidatorMain {
-    @Argument(value="s", alias="wxs")
+    @Argument(value="s", alias="wxs", description = "W3C Schema (XSD)")
     private String wxsSchema;
 
-    @Argument(value="r", alias="rng")
+    @Argument(value="r", alias="rng", description = "RELAX NG Schema")
     private String rngSchema;
 
-    @Argument(value="h", alias="help")
+    @Argument(value="h", alias="help", description = "Displays help")
     boolean isHelp;
 
-    @Argument(value="v", alias="verbose")
+    @Argument(value="v", alias="verbose", description = "Verbose output")
     boolean isVerbose;
 
     private static final String lineSeparator = System.getProperty("line.separator");
