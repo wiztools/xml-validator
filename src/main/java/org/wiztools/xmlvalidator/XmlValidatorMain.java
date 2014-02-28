@@ -44,7 +44,7 @@ public class XmlValidatorMain {
         }
 
         if(parser.rngSchema == null && parser.wxsSchema == null) {
-            System.err.println("Needs atleast -s or -r parameter.");
+            System.err.println("Needs one of -s or -r parameter.");
             Args.usage(parser);
             System.exit(1);
         }
