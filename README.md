@@ -13,3 +13,6 @@ To view help:
 
     $ java -jar xml-validator-VERSION-jar-with-dependencies.jar -h
 
+This tool is available as part of _"The Joy of Unix in Windows Tool Bundle"_:
+
+[![](http://static.wiztools.org/wiztools-cli-tools.png)](http://cli-bundle.wiztools.org/)
